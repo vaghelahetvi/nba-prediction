@@ -119,9 +119,9 @@ def main():
     evaluate_model(model, X_test, y_test)
 
     # Save the Model
-    joblib.dump(model, 'models/nba_player_predictor.pkl')
-    joblib.dump(le, 'models/label_encoder_players.pkl')
-    joblib.dump(le_teams, 'models/label_encoder_teams.pkl')
+    joblib.dump(model, 'nba_player_predictor.pkl')
+    joblib.dump(le, 'label_encoder_players.pkl')
+    joblib.dump(le_teams, 'label_encoder_teams.pkl')
 
     print("\n💾 Model and Encoders saved successfully.")
 
