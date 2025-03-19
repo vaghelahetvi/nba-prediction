@@ -13,8 +13,8 @@ label_encoder_teams = joblib.load("label_encoder_teams.pkl")
 
 # Load test dataset
 print("📂 Loading test dataset...")
-test_data_path = "/Users/hetvivaghela/Desktop/nba/NBA_test.csv"
-test_labels_path = "/Users/hetvivaghela/Desktop/nba/NBA_test_labels.csv"
+test_data_path = "NBA_test.csv"
+test_labels_path = "NBA_test_labels.csv"
 
 test_data = pd.read_csv(test_data_path)
 test_labels = pd.read_csv(test_labels_path)
@@ -83,8 +83,8 @@ yearly_stats["Total Matches"] = yearly_stats["✅ Match"] + yearly_stats["❌ Mi
 yearly_stats["Accuracy (%)"] = (yearly_stats["✅ Match"] / yearly_stats["Total Matches"]) * 100
 
 # Save results
-predictions_df.to_csv("NBA_test_predictions.csv", index=False)
-yearly_stats.to_csv("NBA_test_yearly_accuracy.csv")
+predictions_df.to_csv("Results/NBA_test_predictions.csv", index=False)
+yearly_stats.to_csv("Results/NBA_test_yearly_accuracy.csv")
 
 # Print Summary
 matches_correct = predictions_df["Match Status"].value_counts().get("✅ Match", 0)
