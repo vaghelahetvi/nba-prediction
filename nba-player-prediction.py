@@ -70,7 +70,7 @@ def preprocess_data(data):
 def train_model(X_train, y_train):
     """Train a Random Forest Classifier."""
     X_train = X_train.drop(columns=['game'])
-    model = RandomForestClassifier(n_estimators=450, max_depth=20, max_features='sqrt', random_state=42, class_weight='balanced', n_jobs=-1)
+    model = RandomForestClassifier(n_estimators=100, max_depth=20, max_features='sqrt', random_state=42, class_weight='balanced', n_jobs=-1)
     model.fit(X_train, y_train)
     return model
 
@@ -98,7 +98,7 @@ def predict_player(model, le, le_teams, test_data):
 def main():
     print("🔍 Loading Data...")
 
-    csv_files = glob.glob('/Users/hetvivaghela/Desktop/nba/data/*.csv')
+    csv_files = glob.glob('data/*.csv')
     if not csv_files:
         raise FileNotFoundError("❌ No CSV files found in the 'data/' folder. Please check the path.")
 
@@ -119,9 +119,9 @@ def main():
     evaluate_model(model, X_test, y_test)
 
     # Save the Model
-    joblib.dump(model, 'nba_player_predictor.pkl')
-    joblib.dump(le, 'label_encoder_players.pkl')
-    joblib.dump(le_teams, 'label_encoder_teams.pkl')
+    joblib.dump(model, 'models/nba_player_predictor.pkl')
+    joblib.dump(le, 'models/label_encoder_players.pkl')
+    joblib.dump(le_teams, 'models/label_encoder_teams.pkl')
 
     print("\n💾 Model and Encoders saved successfully.")
 
